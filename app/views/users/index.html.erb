@@ -1,2 +1,18 @@
-<h1>Users List</h1>
-<p>Here is a list of all usres</p>
+<section class="background">
+    <h1 class="users-title">Welcome to Users page</h1>
+    <ul>
+      <% @users.each do |user|%>
+        <%= link_to user do %>
+          <li class="card flex hover">
+            <div class="user-image border">
+              <%= image_tag('R.png',  :width => "100px", :heigth=>"100px") %>
+            </div>
+            <div class="user-data border">
+              <h1><%= user.name %></h1>
+              <p class="number-posts">Number of posts: <%= user.post_counter %></p>
+            </div>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>  
+</section>
