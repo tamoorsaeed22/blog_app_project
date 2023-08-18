@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Post, type: :model do
   describe 'For the Post model' do
     before(:each) do
-      @user = User.new(name: 'Tom', photo: 'image.png', bio: 'Teacher from Mexico', post_counter: 0)
+      @user = User.create(name: 'Tom', photo: 'image.png', bio: 'Teacher from Mexico', post_counter: 0)
       @post = Post.new(author: @user, title: 'Test', text: 'testing', likes_counter: 6, comments_counter: 1)
     end
 
@@ -37,6 +37,18 @@ RSpec.describe Post, type: :model do
     it 'if comments counter is integer' do
       @post.comments_counter = 8
       expect(@post).to be_valid
+    end
+
+    # Test for the custom method: recent_comments
+    it 'returns recent comments' do
+      comment = Comment.create(text: 'Recent comment', author: @user, post: @post)
+      recent_comments = @post.recent_comments
+      expect(recent_comments).to include(comment)
+    end
+
+    # Test for the custom method: update_author_counter
+    it 'updates author post counter when saved' do
+      expect { @post.save }.to change { @user.reload.post_counter }.by(1)
     end
   end
 end
