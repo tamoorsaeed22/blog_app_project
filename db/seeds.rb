@@ -5,10 +5,11 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-User.create(name: 'Tom', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Mexico.')
-User.create(name: 'Lilly', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Poland.')
+User.create(name: 'Tom', photo: 'https://www.istockphoto.com/vector/businessman-icon-vector-symbol-for-web-flat-design-gm1390193778-447241583', bio: 'Teacher from Mexico.')
+User.create(name: 'Lilly', photo: 'https://www.istockphoto.com/vector/businessman-avatar-icon-gm1298227218-391128738', bio: 'Teacher from Poland.')
 User.create(name: 'Tobin', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher.')
 User.create(name: 'Mwape', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Zambia.')
+
 
 Post.create(author_id: 1, title: 'Hello', text: 'This is my first post')
 Post.create(author_id: 2, title: 'Hello World', text: 'This is my second post')
