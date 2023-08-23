@@ -2,33 +2,37 @@ require 'rails_helper'
 
 RSpec.describe 'Posts', type: :request do
   describe 'GET /index' do
-    before(:all) do
-      get user_posts_path(user_id: 1)
+    before(:example) { get '/users/1/posts' }
+
+    it 'responds with 200 code' do
+      expect(response).to have_http_status(:ok)
     end
 
-    it 'returns http success' do
-      get '/users/show/posts/'
-      puts response
-      expect(response).to have_http_status(:success)
+    it 'renders index view' do
+      expect(response).to render_template(:index)
+    end
+
+    it 'renders correct content' do
+      expect(response.body).to include('<h1>Welcome to posts page</h1>')
+      expect(response.body).to include('<h2>Hello</h2>')
+      expect(response.body).to include('This is my Third post')
     end
   end
 
   describe 'GET /show' do
-    before(:each) do
-      get user_post_path(user_id: 1, id: 1)
+    before(:example) { get '/users/1/posts/2' }
+
+    it 'responds with 200 code' do
+      expect(response).to have_http_status(:ok)
     end
 
-    it 'returns http success' do
-      get '/users/show/posts/show'
-      expect(response).to have_http_status(:success)
-    end
-
-    it 'returns http success' do
+    it 'renders show view' do
       expect(response).to render_template(:show)
     end
 
-    it 'Render correct placeholder text' do
-      expect(response.body).to include('Here is a specific post for specific user')
+    it 'renders correct content' do
+      expect(response.body).to include('<h2>Hello World</h2>')
+      expect(response.body).to include('This is my second post')
     end
   end
 end
