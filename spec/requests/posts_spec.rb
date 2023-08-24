@@ -13,7 +13,7 @@ RSpec.describe 'Posts', type: :request do
     end
 
     it 'renders correct content' do
-      expect(response.body).to include('<h1>Welcome to posts page</h1>')
+      expect(response.body).to include('<h1>List of all posts for Tom</h1>')
       expect(response.body).to include('<h2>Hello</h2>')
       expect(response.body).to include('This is my Third post')
     end
