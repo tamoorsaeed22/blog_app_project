@@ -6,6 +6,10 @@
     <div class="user-data border">
       <h1><%= @user.name %></h1>
       <p class="number-posts">Number of posts: <%= @user.post_counter %></p>
+      <div class="right">
+        <%= link_to "See all users", users_path, class: "btn" %>
+        <%= link_to "Add a post", new_user_post_path(@user), class: "btn right" %>
+      </div>
     </div>
   </div>
   <div class="card left">
@@ -17,10 +21,10 @@
   <h1 class="users-title">List of recent Posts</h1>
   <ul>
     <% @user.recent_posts.each do |post| %>
-      <%= link_to user_posts_path(@user) do %>
-        <li class="card left hover">
-          <h4><%= post.title%></h4>
-          <h4><%= post.text%></h4>
+      <%= link_to user_post_path(user_id: post.author_id, id: post.id) do %>
+        <li class="card left">
+          <h2><%= post.title%></h2>
+          <p><%= post.text%></p>
           <div class="right">
             <span>Comments: <%= post.comments_counter %></span>
             <span>Likes: <%= post.likes_counter %> </span>

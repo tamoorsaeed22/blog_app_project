@@ -1,4 +1,4 @@
-<h1>Welcome to posts page</h1>
+<h1>List of all posts for <%= @user.name %></h1>
 
 <section>
   <div class="card flex">
@@ -8,6 +8,10 @@
     <div class="user-data border">
       <h1><%= @user.name %></h1>
       <p class="number-posts">Number of posts: <%= @user.post_counter %></p>
+      <div class="right">
+        <%= link_to "See all users", users_path, class: "btn" %>
+        <%= link_to "Add a post",new_user_post_path(@user), class: "btn right" %>
+      </div>
     </div>
   </div>
 </section>
@@ -15,7 +19,7 @@
   <ul>
     <% @posts.each do |post| %>
       <%= link_to user_post_path(user_id: post.author_id, id: post.id) do %>
-        <li class="card left hover">
+        <li class="card left">
           <div class="card">
             <h2><%= post.title %></h2>
             <p><%= post.text %></p>
