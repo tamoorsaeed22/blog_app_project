@@ -19,7 +19,7 @@ RSpec.describe User, type: :model do
     end
 
     it 'PostCounter must be greater than or equal to zero' do
-      @user.post_counter = 7
+      @user.post_counter = 5
       expect(@user).to be_valid
     end
   end
